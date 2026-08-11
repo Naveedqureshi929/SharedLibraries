@@ -1,16 +1,16 @@
-def git Download (repo)
+def gitDownload (repo)
 {
     git"https://github.com/IntelliqDevops/${repo}.git"
 }
-def build artifact()
+def buildArtifact()
 {
     sh 'mvn package'
 }
-def deploy tomcat(jobname,ip,context)
+def deployTomcat(jobname,ip,context)
 {
     sh"scp/var/lib/jenkins/workspace/${jobname}/webapp/target/webapp.war ubuntu@${ip}:/var/lib/tomcat10/webapps/${context}.war"
 }
-def run selenium(jobname)
+def runSelenium(jobname)
 {
     sh"java -jar /var/lib/jenkins/workspace/${jobname}/testing.jar"
 }
